@@ -3,52 +3,95 @@ package com.ps;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     // Create a static variable to store transactions: hint- ArrayList<Transaction>
     public static void main(String[] args) {
-        // Create class for storing transactions
-        // Fields include date, time, description, vendor and amount
-        // *Note
-        // if amount is positive then the amount is a deposit
-        // if amount is negative then the amount is a payment
+            Scanner scanner = new Scanner(System.in);
+            int choice;
 
-        // Load records of transactions to the static variable for transactions
-        // * hint-Load transactions before the menu loop
+            do {
+                System.out.println("Welcome to the Home Screen:");
+                System.out.println("1. Add Deposit");
+                System.out.println("2. Make Payment");
+                System.out.println("3. Display Ledger");
+                System.out.println("4. Exit");
+                System.out.print("Enter your choice: ");
 
-        // Create CLI menu items
-        // *hint
-        // first do-while: Home menu
-        // second do-while: Ledger menu
-        // third do-while: Reports menu
+                choice = scanner.nextInt();
 
-        // Perform deposit and payment transactions while recording the transactions to the file
+                switch (choice) {
+                    case 1:
+                        System.out.println("You chose: Add Deposit");
+                        // Add Deposit logic here
+                        break;
+                    case 2:
+                        System.out.println("You chose: Make Payment");
+                        // Make Payment logic here
+                        break;
+                    case 3:
+                        System.out.println("You chose: Display Ledger");
+                        // Display Ledger logic here
+                        break;
+                    case 4:
+                        System.out.println("Exiting...");
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+                        break;
+                }
+            } while (choice != 4);
 
-        // Reports
-
-        // Menu Outline
-        // **Home Menu**
-        // D) Add Deposit
-        // P) Make Payment(Debit)
-        // L) Ledger
-        // **Ledger Menu**
-        // A) All
-        // D) Deposit
-        // P) Payments
-        // R) Reports
-        // R) **Reports Menu**
-        // 1) Month To Date
-        // 2) Previous Month
-        // 3) Year To Date
-        // 4) Previous Year
-        // 5) Search by Vendor
-        // 0) Back
-        // H) Home
-        // X) Exit
+            scanner.close();
 
 
-        // ** Report Demo **
-        //  date, time, description, vendor and amount
+            }
+        }
+
+
+// Create class for storing transactions
+// Fields include date, time, description, vendor and amount
+// *Note
+// if amount is positive then the amount is a deposit
+// if amount is negative then the amount is a payment
+
+// Load records of transactions to the static variable for transactions
+// * hint-Load transactions before the menu loop
+
+// Create CLI menu items
+// *hint
+// first do-while: Home menu
+// second do-while: Ledger menu
+// third do-while: Reports menu
+
+// Perform deposit and payment transactions while recording the transactions to the file
+
+// Reports
+
+// Menu Outline
+// **Home Menu**
+// D) Add Deposit
+// P) Make Payment(Debit)
+// L) Ledger
+// **Ledger Menu**
+// A) All
+// D) Deposit
+// P) Payments
+// R) Reports
+// R) **Reports Menu**
+// 1) Month To Date
+// 2) Previous Month
+// 3) Year To Date
+// 4) Previous Year
+// 5) Search by Vendor
+// 0) Back
+// H) Home
+// X) Exit
+
+
+// ** Report Demo **
+//  date, time, description, vendor and amount
 //        Transaction transaction1 = new Transaction(
 //                LocalDate.of(2024, 3, 14),
 //                LocalTime.of(14, 43, 05, 0),
@@ -69,7 +112,7 @@ public class Main {
 //        transactions.add(transaction1);
 //        transactions.add(transaction2);
 
-        // Generate a report- Month to Date
+// Generate a report- Month to Date
 
 //        for(Transaction transaction : transactions){
 //            LocalDate transactionDate = transaction.getDate();
@@ -86,11 +129,8 @@ public class Main {
 //                        transaction.getAmount()
 //                );
 
-                //            Month To Date Report
-                //            -- Transactions --
-                // Date - Time - Description - Vendor - Amount
-                // 4-29-24 - 8:05 - HeartLeaf Plant - Amazon - $19.99
-
-            }
-        }
+//            Month To Date Report
+//            -- Transactions --
+// Date - Time - Description - Vendor - Amount
+// 4-29-24 - 8:05 - HeartLeaf Plant - Amazon - $19.99
 
