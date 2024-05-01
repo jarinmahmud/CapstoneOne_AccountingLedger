@@ -1,5 +1,7 @@
 package com.ps;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -24,8 +26,30 @@ public class Main {
                 switch (choice) {
                     case 1:
                         System.out.println("You chose: Add Deposit");
-                        // Add Deposit logic here
-                        break;
+
+                        double amount;
+                        do { // Prompt user for deposit information
+                            System.out.println("Enter deposit information:");
+                            System.out.print("Account Number: ");
+                            String accountNumber = scanner.nextLine();
+                            System.out.print("Amount: ");
+                            amount = scanner.nextDouble();
+                            scanner.nextLine(); // Consume newline character
+
+                            // Save deposit information to CSV file
+                            try {
+                                FileWriter writer = new FileWriter("deposits.csv", true); // append mode
+                                writer.append(accountNumber + "," + amount + "\n");
+                                writer.close();
+                                System.out.println("Deposit information saved to deposits.csv");
+                            } catch (IOException e) {
+                                System.err.println("Error writing to file: " + e.getMessage());
+                            }
+                        } while (amount >= 0);
+                    {
+                        System.out.println("Enter positive amount.");
+                    }
+                    break;
                     case 2:
                         System.out.println("You chose: Make Payment");
                         // Make Payment logic here
