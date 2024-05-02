@@ -14,6 +14,7 @@ public class ReportScreen {
             System.out.println("3) Year to Date");
             System.out.println("4) Previous Year");
             System.out.println("5) Search by Vendor");
+            System.out.println("6) Type any keyword to filter: ");
             System.out.println("0) Back");
             System.out.print("Choose an option: ");
             int option = scanner.nextInt();
@@ -25,19 +26,27 @@ public class ReportScreen {
                     // Generate Month to Date report
                     break;
                 case 2:
-
+                    ReportService.displayPreviousMonthReport("transaction.txt");
                     // Generate Previous Month report
                     break;
                 case 3:
+                    ReportService.displayYearToDateReport("transaction.txt");
                     // Generate Year to Date report
                     break;
                 case 4:
+                    ReportService.displayPreviousYearReport("transaction.txt");
                     // Generate Previous Year report
                     break;
                 case 5:
+                    ReportService.customSearchVendor("transaction.txt");
                     // Search by Vendor
                     break;
+                case 6:
+                    ReportService.filterSearch("transaction.txt");
+                    // challenge search
+                    break;
                 case 0:
+
                     return;
                 default:
                     System.out.println("Invalid option. Please try again.");
