@@ -19,10 +19,10 @@ public class HomeScreen {
 
             switch (option) {
                 case "D":
-                    // Call method to add deposit
+                    FinancialService.addDeposit(); // add deposit
                     break;
                 case "P":
-                    // Call method to make payment
+                    FinancialService.addDebit(); // add debit
                     break;
                 case "L":
                     LedgerScreen.display();

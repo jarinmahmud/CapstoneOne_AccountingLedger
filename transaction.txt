@@ -1,0 +1,22 @@
+date       | time   | description           | vendor   | amount
+----------------------------------------------------------------
+2023-04-16 | 09:30  | Grocery shopping      | Walmart  | -75.20
+2023-04-17 | 14:45  | Gas refill            | Shell    | -40.00
+2023-04-18 | 08:20  | Coffee with friends   | Starbucks| -15.75
+2023-04-19 | 12:00  | Lunch with coworkers  | Panera   | -22.50
+2023-04-20 | 19:30  | Movie night tickets   | AMC      | -30.00
+2023-04-21 | 16:15  | Haircut               | Salon    | -50.00
+2023-04-22 | 11:30  | Book purchase         | Barnes & Noble | -20.50
+2023-04-23 | 10:00  | Gym membership renewal| Fitness 24/7| -80.00
+2023-04-24 | 15:20  | Dinner date           | Olive Garden| -65.40
+2023-04-25 | 17:45  | Clothing shopping     | H&M      | -95.75
+2023-04-26 | 13:10  | Car wash              | Super Clean| -12.00
+2023-04-27 | 10:45  | Utility bill payment  | Electric Company| -120.00
+2023-04-28 | 08:55  | Brunch with family    | IHOP     | -40.25
+2023-04-29 | 14:00  | Laptop repair         | Repair Center| -200.00
+2023-04-30 | 12:30  | Charity donation      | Red Cross| -50.00
+2023-05-01 | 18:20  | Dinner with colleagues| Cheesecake Factory| -90.75
+2023-05-02 | 09:10  | Music concert tickets | Ticketmaster| -75.00
+2023-05-03 | 16:40  | Pet grooming          | PetSmart | -35.50
+2023-05-04 | 11:55  | Home decor purchase   | IKEA     | -60.00
+2023-05-05 | 13:25  | Subscription renewal  | Spotify  | -9.99

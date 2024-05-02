@@ -21,9 +21,11 @@ public class ReportScreen {
 
             switch (option) {
                 case 1:
+                    ReportService.displayMonthToDateReport("transaction.txt");
                     // Generate Month to Date report
                     break;
                 case 2:
+
                     // Generate Previous Month report
                     break;
                 case 3:

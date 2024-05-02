@@ -19,12 +19,15 @@ public class LedgerScreen {
 
             switch (option) {
                 case "A":
+                    FinancialService.displayEntries("transaction.txt");
                     // Display all entries
                     break;
                 case "D":
+                    FinancialService.displayDeposits("transaction.txt");
                     // Display deposits
                     break;
                 case "P":
+                    FinancialService.displayPayments("transaction.txt");
                     // Display payments
                     break;
                 case "R":
