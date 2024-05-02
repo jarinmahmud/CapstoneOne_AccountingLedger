@@ -1,77 +1,92 @@
 package com.ps;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    // Create a static variable to store transactions: hint- ArrayList<Transaction>
+
     public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            int choice;
+        System.out.println("Welcome to Accounting Ledger CLI App");
 
-            do {
-                System.out.println("Welcome to the Home Screen:");
-                System.out.println("1. Add Deposit");
-                System.out.println("2. Make Payment");
-                System.out.println("3. Display Ledger");
-                System.out.println("4. Exit");
-                System.out.print("Enter your choice: ");
+        // Display home screen
+        HomeScreen.display();
 
-                choice = scanner.nextInt();
-
-                switch (choice) {
-                    case 1:
-                        System.out.println("You chose: Add Deposit");
-
-                        double amount;
-                        do { // Prompt user for deposit information
-                            System.out.println("Enter deposit information:");
-                            System.out.print("Account Number: ");
-                            String accountNumber = scanner.nextLine();
-                            System.out.print("Amount: ");
-                            amount = scanner.nextDouble();
-                            scanner.nextLine(); // Consume newline character
-
-                            // Save deposit information to CSV file
-                            try {
-                                FileWriter writer = new FileWriter("deposits.csv", true); // append mode
-                                writer.append(accountNumber + "," + amount + "\n");
-                                writer.close();
-                                System.out.println("Deposit information saved to deposits.csv");
-                            } catch (IOException e) {
-                                System.err.println("Error writing to file: " + e.getMessage());
-                            }
-                        } while (amount >= 0);
-                    {
-                        System.out.println("Enter positive amount.");
-                    }
-                    break;
-                    case 2:
-                        System.out.println("You chose: Make Payment");
-                        // Make Payment logic here
-                        break;
-                    case 3:
-                        System.out.println("You chose: Display Ledger");
-                        // Display Ledger logic here
-                        break;
-                    case 4:
-                        System.out.println("Exiting...");
-                        break;
-                    default:
-                        System.out.println("Invalid choice. Please enter a number between 1 and 4.");
-                        break;
-                }
-            } while (choice != 4);
-
-            scanner.close();
+        System.out.println("Thank you.");
+    }
+}
 
 
-            }
-        }
+//import java.io.FileWriter;
+//import java.io.IOException;
+//import java.time.LocalDate;
+//import java.time.LocalTime;
+//import java.util.ArrayList;
+//import java.util.Scanner;
+//
+//public class Main {
+//    // Create a static variable to store transactions: hint- ArrayList<Transaction>
+//    public static void main(String[] args) {
+//            Scanner scanner = new Scanner(System.in);
+//            int choice;
+//
+//            do {
+//                System.out.println("Welcome to the Home Screen:");
+//                System.out.println("1. Add Deposit");
+//                System.out.println("2. Make Payment");
+//                System.out.println("3. Display Ledger");
+//                System.out.println("4. Exit");
+//                System.out.print("Enter your choice: ");
+//
+//                choice = scanner.nextInt();
+//
+//                switch (choice) {
+//                    case 1:
+//                        System.out.println("You chose: Add Deposit");
+//
+//                        double amount;
+//                        do { // Prompt user for deposit information
+//                            System.out.println("Enter deposit information:");
+//                            System.out.print("Account Number: ");
+//                            String accountNumber = scanner.nextLine();
+//                            System.out.print("Amount: ");
+//                            amount = scanner.nextDouble();
+//                            scanner.nextLine(); // Consume newline character
+//
+//                            // Save deposit information to CSV file
+//                            try {
+//                                FileWriter writer = new FileWriter("deposits.csv", true); // append mode
+//                                writer.append(accountNumber + "," + amount + "\n");
+//                                writer.close();
+//                                System.out.println("Deposit information saved to deposits.csv");
+//                            } catch (IOException e) {
+//                                System.err.println("Error writing to file: " + e.getMessage());
+//                            }
+//                        } while (amount >= 0);
+//                    {
+//                        System.out.println("Enter positive amount.");
+//                    }
+//                    break;
+//                    case 2:
+//                        System.out.println("You chose: Make Payment");
+//                        // Make Payment logic here
+//                        break;
+//                    case 3:
+//                        System.out.println("You chose: Display Ledger");
+//                        // Display Ledger logic here
+//                        break;
+//                    case 4:
+//                        System.out.println("Exiting...");
+//                        break;
+//                    default:
+//                        System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+//                        break;
+//                }
+//            } while (choice != 4);
+//
+//            scanner.close();
+//
+//
+//            }
+//        }
 
 
 // Create class for storing transactions

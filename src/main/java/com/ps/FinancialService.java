@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FinancialService {
-    private static final String FILE_PATH = "transactions.csv";
+    private static final String FILE_PATH = "transactions.txt";
 
     public void addTransaction(Transaction transaction) {
         try {
