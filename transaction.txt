@@ -1,5 +1,3 @@
-date       | time   | description           | vendor   | amount
-----------------------------------------------------------------
 2023-04-16 | 09:30  | Grocery shopping      | Walmart  | -75.20
 2023-04-17 | 14:45  | Gas refill            | Shell    | -40.00
 2023-04-18 | 08:20  | Coffee with friends   | Starbucks| -15.75
@@ -20,3 +18,11 @@ date       | time   | description           | vendor   | amount
 2023-05-03 | 16:40  | Pet grooming          | PetSmart | -35.50
 2023-05-04 | 11:55  | Home decor purchase   | IKEA     | -60.00
 2023-05-05 | 13:25  | Subscription renewal  | Spotify  | -9.99
+2022-06-30|04:45|Deposit 1|Amazon|12.0
+2023-03-24|02:30|Deposit 2|Starbucks|5.0
+2024-05-24|03:45|Deposit 3|Ross|123.9
+2023-07-18|03:50|Deposit 4|Amazon|34.0
+2023-12-30|08:56|Dinner|Chillis|56.78
+2024-03-12|06:17|Payment 1|Ross|-15.0
+2023-04-16|05:25|Payment 2|BP Fuel|-35.0
+2022-04-19|06:57|Shopping|Green Acres|-328.87

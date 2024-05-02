@@ -9,17 +9,6 @@ import java.util.Scanner;
 public class FinancialService {
     private static final String fileName = "transaction.txt";
 
-    public void addTransaction(Transaction transaction) {
-        try {
-            FileWriter writer = new FileWriter(fileName, true);
-            writer.append(String.format("%s|%s|%s|%s|%.2f\n",
-                    transaction.getDate(), transaction.getTime(), transaction.getDescription(),
-                    transaction.getVendor(), transaction.getAmount()));
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     public static void addDeposit() {
         Scanner scanner = new Scanner(System.in);
 
@@ -27,7 +16,7 @@ public class FinancialService {
         System.out.println("Enter deposit details:");
         System.out.print("Date (YYYY-MM-DD): ");
         String date = scanner.nextLine();
-        System.out.print("Time (HH:MM:SS): ");
+        System.out.print("Time (HH:MM): ");
         String time = scanner.nextLine();
         System.out.print("Description: ");
         String description = scanner.nextLine();
@@ -41,9 +30,9 @@ public class FinancialService {
             writer.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
             System.out.println("Deposit added successfully.");
         } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getMessage());
+            System.out.println("Error writing to file: ");
         } finally {
-            scanner.close();
+            System.out.println("Choose next option");
         }
     }
 
@@ -54,7 +43,7 @@ public class FinancialService {
         System.out.println("Enter debit details:");
         System.out.print("Date (YYYY-MM-DD): ");
         String date = scanner.nextLine();
-        System.out.print("Time (HH:MM:SS): ");
+        System.out.print("Time (HH:MM): ");
         String time = scanner.nextLine();
         System.out.print("Description: ");
         String description = scanner.nextLine();
@@ -65,18 +54,18 @@ public class FinancialService {
 
         // Write debit information to text file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("transaction.txt", true))) {
-            writer.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
+            writer.write(date + "|" + time + "|" + description + "|" + vendor + "|-" + amount + "\n");
             System.out.println("Debit added successfully.");
         } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getMessage());
+            System.out.println("Error writing to file: " + e.getMessage());
         } finally {
-            scanner.close();
+            System.out.println("Choose next option: ");
         }
     }
 
     public static void displayEntries(String filename) {
         List<String> entries = new ArrayList<>();
-         filename = "transaction.txt" ;
+        filename = "transaction.txt";
 
         // Read entries from file
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -101,14 +90,20 @@ public class FinancialService {
     public static void displayDeposits(String filename) {
         List<String> deposits = new ArrayList<>();
 
-        // Read deposits from file
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                deposits.add(line);
+                String[] parts = line.split("\\|");
+                double amount = Double.parseDouble(parts[4]);
+
+                if (amount > 0) { // Only consider positive values as deposits
+                    deposits.add(line);
+                }
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("Error parsing amount: " + e.getMessage());
         }
 
         // Sort deposits by newest first
@@ -124,14 +119,20 @@ public class FinancialService {
     public static void displayPayments(String filename) {
         List<String> payments = new ArrayList<>();
 
-        // Read payments from file
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                payments.add(line);
+                String[] parts = line.split("\\|");
+                double amount = Double.parseDouble(parts[4]);
+
+                if (amount < 0) { // Only consider negative values as payments
+                    payments.add(line);
+                }
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("Error parsing amount: " + e.getMessage());
         }
 
         // Sort payments by newest first
@@ -145,6 +146,7 @@ public class FinancialService {
     }
 
 
-}
-    // Other methods for reading transactions, etc.
+    }
+
+
 
