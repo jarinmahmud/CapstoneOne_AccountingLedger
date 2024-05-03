@@ -1,12 +1,8 @@
 package com.ps;
-
 import java.util.Scanner;
-
 public class HomeScreen {
-
     public static void display() {
         Scanner scanner = new Scanner(System.in); //scanner class to take input
-
         while (true) {
             // Home Screen Prompt
             System.out.println("Home Screen:");
@@ -33,8 +29,6 @@ public class HomeScreen {
                 default:
                     System.out.println("Invalid option. Please try again.");
             }
-
         }
-
     }
 }

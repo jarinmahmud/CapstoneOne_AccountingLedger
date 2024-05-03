@@ -5,8 +5,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Transaction {
-
-
     //common variables
     private LocalDate date;
     private LocalTime time;

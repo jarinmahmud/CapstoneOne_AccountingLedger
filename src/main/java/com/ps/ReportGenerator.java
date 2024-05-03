@@ -1,8 +1,6 @@
 package com.ps;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -135,6 +133,7 @@ public class ReportGenerator  {
         }
 
     public static void filterSearch(String filename) {
+             //taking input for start date
             System.out.print("Enter start date (YYYY-MM-DD): ");
             String startDateStr = scanner.nextLine();
             LocalDate startDate = null;
@@ -142,6 +141,7 @@ public class ReportGenerator  {
                 startDate = LocalDate.parse(startDateStr);
             }
 
+            //taking input for end date
             System.out.print("Enter end date (YYYY-MM-DD): ");
             String endDateStr = scanner.nextLine();
             LocalDate endDate = null;
@@ -162,14 +162,15 @@ public class ReportGenerator  {
                 amount = Double.parseDouble(amountStr); // returns double from string
             }
 
+            //reading file
             try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split("\\|");
-                    LocalDate transactionDate = LocalDate.parse(parts[0]);
-                    String transactionDescription = parts[2].trim();
-                    String transactionVendor = parts[3].trim();
-                    double transactionAmount = Double.parseDouble(parts[4]);
+                    String[] parts = line.split("\\|"); // splitting elements by "|"
+                    LocalDate transactionDate = LocalDate.parse(parts[0]); // date is in position 0
+                    String transactionDescription = parts[2].trim(); //description is in position 2
+                    String transactionVendor = parts[3].trim(); //vendor name is in position 3
+                    double transactionAmount = Double.parseDouble(parts[4]); // amount is in position 4
 
                     if ((startDate == null || transactionDate.isAfter(startDate) || transactionDate.equals(startDate)) &&
                             (endDate == null || transactionDate.isBefore(endDate) || transactionDate.equals(endDate)) &&
@@ -179,23 +180,12 @@ public class ReportGenerator  {
                         System.out.println(line);
                     }
                 }
-            } catch (IOException e) {
-                System.err.println("Error reading file: " + e.getMessage());
-            } catch (NumberFormatException e) {
-                System.err.println("Error parsing amount: " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Error reading file.");
             }
 
         }
     }
 
-
-
-
-
-
-
-
-
-    // Other methods for generating different types of reports
 
 

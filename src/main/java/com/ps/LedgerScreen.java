@@ -1,9 +1,6 @@
 package com.ps;
-
 import java.util.Scanner;
-
 public class LedgerScreen {
-
     public static void display() {
         Scanner scanner = new Scanner(System.in); // scanner class to take input
         while (true) {
@@ -17,7 +14,6 @@ public class LedgerScreen {
             System.out.print("Choose an option: ");
             String option = scanner.nextLine().toUpperCase();
             String path = "transaction.txt";
-
             switch (option) {
                 case "A":
                     TransactionGenerator.displayEntries(path); // displays all entries

@@ -1,9 +1,6 @@
 package com.ps;
-
 import java.util.Scanner;
-
 public class ReportScreen {
-
     public static void display() {
         Scanner scanner = new Scanner(System.in); // scanner class to take input
         while (true) {
