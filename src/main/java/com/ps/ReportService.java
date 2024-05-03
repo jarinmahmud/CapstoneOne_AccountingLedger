@@ -10,10 +10,6 @@ import java.util.Scanner;
 
 public class ReportService {
 
-//    public List<String> generateReport(String reportType, String... args) {
-//        // Implement report generation logic based on reportType and args
-//        return null;
-//    }
 
     public static void displayMonthToDateReport(String filename) {
         LocalDate currentDate = LocalDate.now();
@@ -130,14 +126,13 @@ public class ReportService {
                     }
                 }
             } catch (IOException e) {
-                System.err.println("Error reading file: " + e.getMessage());
+                System.out.println("Error reading file.");
             }
 
             if (!found) {
                 System.out.println("No entries found for vendor: " + vendorName);
             }
 
-            scanner.close();
         }
 
     public static void filterSearch(String filename) {
@@ -193,7 +188,6 @@ public class ReportService {
                 System.err.println("Error parsing amount: " + e.getMessage());
             }
 
-            scanner.close();
         }
     }
 

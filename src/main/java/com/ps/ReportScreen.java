@@ -14,7 +14,7 @@ public class ReportScreen {
             System.out.println("3) Year to Date");
             System.out.println("4) Previous Year");
             System.out.println("5) Search by Vendor");
-            System.out.println("6) Type any keyword to filter: ");
+            System.out.println("6) Search by keyword ");
             System.out.println("0) Back");
             System.out.print("Choose an option: ");
             int option = scanner.nextInt();
