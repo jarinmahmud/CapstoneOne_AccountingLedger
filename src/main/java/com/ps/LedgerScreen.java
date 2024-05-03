@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class LedgerScreen {
 
     public static void display() {
-        Scanner scanner = new Scanner(System.in);
-
+        Scanner scanner = new Scanner(System.in); // scanner class to take input
         while (true) {
+            //Ledger Screen prompt
             System.out.println("Ledger Screen:");
             System.out.println("A) All");
             System.out.println("D) Deposits");
@@ -16,22 +16,20 @@ public class LedgerScreen {
             System.out.println("H) Home");
             System.out.print("Choose an option: ");
             String option = scanner.nextLine().toUpperCase();
+            String path = "transaction.txt";
 
             switch (option) {
                 case "A":
-                    FinancialService.displayEntries("transaction.txt");
-                    // Display all entries
+                    TransactionGenerator.displayEntries(path); // displays all entries
                     break;
                 case "D":
-                    FinancialService.displayDeposits("transaction.txt");
-                    // Display deposits
+                    TransactionGenerator.displayDeposits(path); // displays all deposits
                     break;
                 case "P":
-                    FinancialService.displayPayments("transaction.txt");
-                    // Display payments
+                    TransactionGenerator.displayPayments(path); // displays all payments
                     break;
                 case "R":
-                    ReportScreen.display();
+                    ReportScreen.display(); // display report screen prompt
                     break;
                 case "H":
                     return;
@@ -41,3 +39,4 @@ public class LedgerScreen {
         }
     }
 }
+

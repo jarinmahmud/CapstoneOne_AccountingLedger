@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class ReportScreen {
 
     public static void display() {
-        Scanner scanner = new Scanner(System.in);
-
+        Scanner scanner = new Scanner(System.in); // scanner class to take input
         while (true) {
+            // Report Screen Prompt
             System.out.println("Report Screen:");
             System.out.println("1) Month to Date");
             System.out.println("2) Previous Month");
@@ -17,36 +17,30 @@ public class ReportScreen {
             System.out.println("6) Search by keyword ");
             System.out.println("0) Back");
             System.out.print("Choose an option: ");
-            int option = scanner.nextInt();
-            scanner.nextLine(); // Consume newline character
+            int option = scanner.nextInt(); // takes the option number as input
+            scanner.nextLine(); // new line
+            String path = "transaction.txt";
 
             switch (option) {
                 case 1:
-                    ReportService.displayMonthToDateReport("transaction.txt");
-                    // Generate Month to Date report
+                    ReportGenerator.displayMonthToDateReport(path); // generates Month to Date report
                     break;
                 case 2:
-                    ReportService.displayPreviousMonthReport("transaction.txt");
-                    // Generate Previous Month report
+                    ReportGenerator.displayPreviousMonthReport(path); // generates Previous Month report
                     break;
                 case 3:
-                    ReportService.displayYearToDateReport("transaction.txt");
-                    // Generate Year to Date report
+                    ReportGenerator.displayYearToDateReport(path); // generates Year to Date report
                     break;
                 case 4:
-                    ReportService.displayPreviousYearReport("transaction.txt");
-                    // Generate Previous Year report
+                    ReportGenerator.displayPreviousYearReport(path); // generates Previous Year report
                     break;
                 case 5:
-                    ReportService.customSearchVendor("transaction.txt");
-                    // Search by Vendor
+                    ReportGenerator.customSearchVendor(path); // Search by Vendor
                     break;
                 case 6:
-                    ReportService.filterSearch("transaction.txt");
-                    // challenge search
+                    ReportGenerator.filterSearch(path); // challenge search
                     break;
                 case 0:
-
                     return;
                 default:
                     System.out.println("Invalid option. Please try again.");
@@ -54,3 +48,4 @@ public class ReportScreen {
         }
     }
 }
+

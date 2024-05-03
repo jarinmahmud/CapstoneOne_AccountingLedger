@@ -2,14 +2,19 @@ package com.ps;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Transaction {
+
+
+    //common variables
     private LocalDate date;
     private LocalTime time;
     private String description;
     private String vendor;
     private double amount;
 
+    //constructor
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
         this.time = time;
@@ -18,6 +23,7 @@ public class Transaction {
         this.amount = amount;
     }
 
+    // getters and setters
     public LocalDate getDate() {
         return date;
     }
@@ -57,5 +63,5 @@ public class Transaction {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    // Constructor, getters, and setters
+
 }

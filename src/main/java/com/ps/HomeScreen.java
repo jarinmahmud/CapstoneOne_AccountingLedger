@@ -5,33 +5,30 @@ import java.util.Scanner;
 public class HomeScreen {
 
     public static void display() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); //scanner class to take input
 
         while (true) {
+            // Home Screen Prompt
             System.out.println("Home Screen:");
             System.out.println("D) Add Deposit");
             System.out.println("P) Make Payment (Debit)");
             System.out.println("L) Ledger");
-            System.out.println("R) Reports");
             System.out.println("X) Exit");
             System.out.print("Choose an option: ");
-            String option = scanner.nextLine().toUpperCase();
+            String option = scanner.nextLine().toUpperCase();// takes the option and converts it to uppercase
 
             switch (option) {
                 case "D":
-                    FinancialService.addDeposit(); // add deposit
+                    TransactionGenerator.addDeposit(); // implies add deposit method
                     break;
                 case "P":
-                    FinancialService.addDebit(); // add debit
+                    TransactionGenerator.addDebit(); // implies add debit method
                     break;
                 case "L":
-                    LedgerScreen.display();
-                    break;
-                case "R":
-                    ReportScreen.display();
+                    LedgerScreen.display(); // displays ledger screen
                     break;
                 case "X":
-                    System.out.println("Exiting...");
+                    System.out.println("Exiting Application.");
                     return;
                 default:
                     System.out.println("Invalid option. Please try again.");

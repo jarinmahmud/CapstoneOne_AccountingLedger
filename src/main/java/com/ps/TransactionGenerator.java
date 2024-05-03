@@ -6,13 +6,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class FinancialService {
-    private static final String fileName = "transaction.txt";
+public class TransactionGenerator {
+    private static final String path = "transaction.txt";
 
     public static void addDeposit() {
         Scanner scanner = new Scanner(System.in);
 
-        // Prompt user for deposit information
+        // Prompt for deposit information
         System.out.println("Enter deposit details:");
         System.out.print("Date (YYYY-MM-DD): ");
         String date = scanner.nextLine();
@@ -25,14 +25,13 @@ public class FinancialService {
         System.out.print("Amount: ");
         double amount = scanner.nextDouble();
 
-        // Write deposit information to text file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("transaction.txt", true))) {
+        // deposit information to text file
+        //writing the information on file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path, true))) {
             writer.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
             System.out.println("Deposit added successfully.");
-        } catch (IOException e) {
-            System.out.println("Error writing to file: ");
-        } finally {
-            System.out.println("Choose next option");
+        } catch (Exception e) {
+            System.out.println("Error writing to file.");
         }
     }
 
@@ -52,32 +51,29 @@ public class FinancialService {
         System.out.print("Amount: ");
         double amount = scanner.nextDouble();
 
-        // Write debit information to text file
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("transaction.txt", true))) {
+        // Writing debit information to text file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(path, true))) {
             writer.write(date + "|" + time + "|" + description + "|" + vendor + "|-" + amount + "\n");
             System.out.println("Debit added successfully.");
-        } catch (IOException e) {
-            System.out.println("Error writing to file: " + e.getMessage());
-        } finally {
-            System.out.println("Choose next option: ");
+        } catch (Exception e) {
+            System.out.println("Error writing to file.");
         }
     }
 
     public static void displayEntries(String filename) {
-        List<String> entries = new ArrayList<>();
-        filename = "transaction.txt";
+        List<String> entries = new ArrayList<>(); // creating arraylist to store entry list
 
         // Read entries from file
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 entries.add(line);
             }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error reading file.");
         }
 
-        // Sort entries by newest first
+        // Sorting entries by newest first
         Collections.reverse(entries);
 
         // Display sorted entries
@@ -88,22 +84,21 @@ public class FinancialService {
     }
 
     public static void displayDeposits(String filename) {
-        List<String> deposits = new ArrayList<>();
+        List<String> deposits = new ArrayList<>(); // arraylist for storing deposit information
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        //reading file
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 double amount = Double.parseDouble(parts[4]);
 
-                if (amount > 0) { // Only consider positive values as deposits
+                if (amount > 0) { // Only considering positive values as deposits
                     deposits.add(line);
                 }
             }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.err.println("Error parsing amount: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error reading file. ");
         }
 
         // Sort deposits by newest first
@@ -117,9 +112,10 @@ public class FinancialService {
     }
 
     public static void displayPayments(String filename) {
-        List<String> payments = new ArrayList<>();
+        List<String> payments = new ArrayList<>(); // arraylist for sorting payments
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        //reading file
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
@@ -129,12 +125,9 @@ public class FinancialService {
                     payments.add(line);
                 }
             }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.err.println("Error parsing amount: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error reading file: " + e.getMessage());
         }
-
         // Sort payments by newest first
         Collections.reverse(payments);
 
